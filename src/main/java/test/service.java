@@ -11,7 +11,7 @@ public class service {
 	@Path("temp")
 	
 	public Response getString(){
-		return Response.status(200).entity("Hello Archit").build();
+		return Response.status(200).entity("Archit is working on this project").build();
 	}
 	
 }
