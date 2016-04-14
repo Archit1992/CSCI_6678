@@ -15,7 +15,7 @@ public class ConnectionProvider {
 		
 		try {
 			
-			MongoClientURI uri = new MongoClientURI("mongodb://archit:gajjar@ds035563.mlab.com:035563/saasunh");
+			MongoClientURI uri = new MongoClientURI("mongodb://<db:user>:<db:password>@ds<db:port>.mlab.com:<db:port>/<db:name>");
 			MongoClient client = new MongoClient(uri); // MongoClient connected with the specified URI.
 
 			@SuppressWarnings("deprecation")
