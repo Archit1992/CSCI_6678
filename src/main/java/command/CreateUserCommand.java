@@ -62,8 +62,8 @@ public class CreateUserCommand {
 		CreateUserCommand create = new CreateUserCommand();
 		User user = new User();
 
-		user.setFirstName(userName);
-		user.setPassword(password);
+		user.setFirstName("unh");
+		user.setPassword("unh");
 		Object id = create.execute(user);
 		
 		if ( id!=null) {
