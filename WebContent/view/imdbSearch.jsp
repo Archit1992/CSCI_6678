@@ -21,16 +21,27 @@
 			var requestData = $('#search').val();
 			var resultElement = $('#response');
 			alert(requestData);
-			
+
 			$.ajax({
 				url : 'http://www.omdbapi.com/',
 				method : 'get',
-				data : {t : requestData},
+				data : {
+					t : requestData
+				},
 				success : function(data) {
-					resultElement.html('Title: ' + data.Title +'<br/>'+'Released: ' +data.Released);
+					//resultElement.html('Title: ' + data.Title +'<br/>'+'Released: ' +data.Released);
+					alert(data);
+					$('#Poster').attr('src', data.Poster);
+					$('#Title').html(data.Title);
+					$('#Type').html(data.Type);
+					$('#imdbRating').html(data.imdbRating);
+					$('#Released').html(data.Released);
+					$('#Add').fadeIn(4000);
+					$('#table').fadeIn(2000);
+
 				}
 			})
-		
+
 		})
 	})
 </script>
@@ -155,9 +166,34 @@
 
 
 		<!--  ================ FORM HTML5 Content ================================== -->
-		<div id="response">
+		<div>
+
+			<table  cellpadding="10px" style="display:none; border-style:solid;" id="table">
+				<thead>
+					<tr>
+						<th style="border-style:solid; text-align: center">Poster</th>
+						<th style="border-style:solid; text-align: center">Title</th>
+						<th style="border-style:solid; text-align: center">Type</th>
+						<th style="border-style:solid; text-align: center">IMDB Rating</th>
+						<th style="border-style:solid; text-align: center">Released</th>
+						<th style="border-style:solid; text-align: center">Action</th>
+					</tr>
+				</thead>
+				<tr>
+					<td><img src=" " id="Poster" style="border-style:solid; text-align: center;" width="300px" height="70px" /></td>
+					<td id="Title" style="border-style:solid; text-align: center;" width="200px"></td>
+					<td id="Type" style="border-style:solid; text-align: center;" width="200px"></td>
+					<td id="imdbRating" style="border-style:solid; text-align: center" width="200px"></td>
+					<td id="Released" style="border-style:solid; text-align: center" width="200px"></td>
+					<td id="Add" style="border-style:solid; text-align: center" width="200px"><a href="" class="btn">Add</a></td>
+				</tr>
+
+
+			</table>
+
+
 		</div>
-		
+
 
 		<!--  ================ /FORM HTML5 Content ================================== -->
 		<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
