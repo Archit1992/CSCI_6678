@@ -14,14 +14,13 @@
 	src="http://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
 
 <script type="text/javascript">
+	var x;
 	$(document).ready(function() {
-
+	
 		$('#sub').click(function() {
-			alert('hello')
 			var requestData = $('#search').val();
 			var resultElement = $('#response');
-			alert(requestData);
-
+			
 			$.ajax({
 				url : 'http://www.omdbapi.com/',
 				method : 'get',
@@ -31,21 +30,27 @@
 				success : function(data) {
 					//resultElement.html('Title: ' + data.Title +'<br/>'+'Released: ' +data.Released);
 					alert(data);
+					console.log(data);
 					$('#Poster').attr('src', data.Poster);
 					$('#Title').html(data.Title);
 					$('#Type').html(data.Type);
 					$('#imdbRating').html(data.imdbRating);
 					$('#Released').html(data.Released);
+					$('#imdbId').html(data.imdbID);
 					$('#Add').fadeIn(4000);
 					$('#table').fadeIn(2000);
-
+					x="id="+data.imdbID+"&rating="+data.imdbRating;
 				}
 			})
-
 		})
+		
+		$('#addWish').click(function add(){
+			alert(x);
+			window.location.href="http://localhost:8080/saasunh/rest/user/add?"+x;
+		});
+			
 	})
 </script>
-
 </head>
 <body>
 
@@ -175,6 +180,7 @@
 						<th style="border-style:solid; text-align: center">Title</th>
 						<th style="border-style:solid; text-align: center">Type</th>
 						<th style="border-style:solid; text-align: center">IMDB Rating</th>
+						<th style="border-style:solid; text-align: center">IMDB ID</th>
 						<th style="border-style:solid; text-align: center">Released</th>
 						<th style="border-style:solid; text-align: center">Action</th>
 					</tr>
@@ -184,8 +190,11 @@
 					<td id="Title" style="border-style:solid; text-align: center;" width="200px"></td>
 					<td id="Type" style="border-style:solid; text-align: center;" width="200px"></td>
 					<td id="imdbRating" style="border-style:solid; text-align: center" width="200px"></td>
+					<td id="imdbId" style="border-style:solid; text-align: center" width="200px"></td>
 					<td id="Released" style="border-style:solid; text-align: center" width="200px"></td>
-					<td id="Add" style="border-style:solid; text-align: center" width="200px"><a href="" class="btn">Add</a></td>
+					<td id="Add" style="border-style:solid; text-align: center" width="200px">
+						<input type="button" value="Add" class="btn btn-success" id="addWish" onclick="add()">
+					</td>
 				</tr>
 
 
@@ -229,8 +238,6 @@
 			</div>
 		</div>
 		<!--  ================ /COLS HTML5 Content ================================== -->
-
-
 	</div>
 	<script type="text/javascript">
 		
