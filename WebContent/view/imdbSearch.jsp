@@ -19,6 +19,7 @@
 	
 		$('#sub').click(function() {
 			var requestData = $('#search').val();
+			var sessionData=$('#sessionDetail').val();
 			var resultElement = $('#response');
 			
 			$.ajax({
@@ -39,14 +40,14 @@
 					$('#imdbId').html(data.imdbID);
 					$('#Add').fadeIn(4000);
 					$('#table').fadeIn(2000);
-					x="id="+data.imdbID+"&rating="+data.imdbRating;
+					x="id="+data.imdbID+"&releasedDate="+data.Released+"&ObjectId="+sessionData;
 				}
 			})
 		})
 		
 		$('#addWish').click(function add(){
 			alert(x);
-			window.location.href="http://localhost:8080/saasunh/rest/user/add?"+x;
+			//window.location.href="http://localhost:8080/saasunh/rest/user/add?"+x+"&ObjectId"+sessionData;
 		});
 			
 	})
@@ -57,12 +58,13 @@
 	<div class="container">
 
 		<!--  ================ Navigationbar HTML5 Content ================================== -->
-			
-			<jsp:include page="header.jsp"></jsp:include>
+		
+		<jsp:include page="header.jsp"></jsp:include>
 		
 		
 		<!--  ================ /Navigationbar HTML5 Content ================================== -->
 
+		
 		<!--  ================ Jumbotron HTML5 Content ================================== -->
 		<div class="jumbotron">
 			<h1>IMDB Wish List</h1>
@@ -139,6 +141,12 @@
 									</ul>
 								</div>
 							</div>
+							
+							<!-- ----------------Getting data from Session -------------------------------  -->
+							
+							<input type="text" style="display: none" id="sessionDetail" value="<%=(String)session.getAttribute("sessionlog") %>" >
+			
+							
 							<div class="form-group">
 								<input type="search" class="form-control" id="search">
 							</div>
@@ -156,7 +164,7 @@
 		</div>
 
 
-
+		<br/><br/>
 		<!--  ================ FORM HTML5 Content ================================== -->
 		<div>
 
@@ -189,7 +197,8 @@
 
 
 		</div>
-
+		<div>
+		</div>
 
 		<!--  ================ /FORM HTML5 Content ================================== -->
 		<br /> <br /> <br /> <br /> <br /> <br /> <br /> <br /> <br />
