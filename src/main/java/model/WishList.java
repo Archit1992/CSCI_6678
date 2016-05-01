@@ -1,19 +1,36 @@
 package model;
 
-import java.util.Date;
-
 public class WishList {
-	private String userName;
-	private String imdbId;
-	private String email;
+	
+	private String userId;
+	private String imdbId;	
 	private int day,month,year;
+	private String name;
+	private String poster;
 
-	public String getUserName() {
-		return userName;
+	
+	public String getName() {
+		return name;
 	}
 
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPoster() {
+		return poster;
+	}
+
+	public void setPoster(String poster) {
+		this.poster = poster;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 
 	public String getImdbId() {
@@ -24,14 +41,7 @@ public class WishList {
 		this.imdbId = imdbId;
 	}
 
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-	
+		
 	public int getDay() {
 		return day;
 	}
